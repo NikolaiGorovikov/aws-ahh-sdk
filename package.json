@@ -1,0 +1,29 @@
+{
+  "name": "aws-ahh-sdk",
+  "version": "1.0.0",
+  "description": "Best aws ahh package",
+  "main": "index.js",
+  "directories": {
+    "example": "examples",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NikolaiGorovikov/aws-ahh-sdk.git"
+  },
+  "author": "Nikolai Gorovikov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NikolaiGorovikov/aws-ahh-sdk/issues"
+  },
+  "homepage": "https://github.com/NikolaiGorovikov/aws-ahh-sdk#readme",
+  "dependencies": {
+    "aws-ahh-sdk": "^1.0.0",
+    "aws4": "^1.13.2",
+    "undici": "^7.5.0",
+    "winston": "^3.17.0"
+  }
+}
