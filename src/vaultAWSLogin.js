@@ -51,11 +51,18 @@ async function vaultLogin(caches, obj, role) {
         logger.info("The TLS details are provided.")
         logger.info("Reading the certificate and the key.");
 
-        agent = new Agent({connect: {
-                cert: fs.readFileSync(tls.cert),
-                key: fs.readFileSync(tls.key),
-                ca: tls.ca ? fs.readFileSync(tls.ca) : undefined,
-            }});
+        try {
+            agent = new Agent({connect: {
+                    cert: fs.readFileSync(tls.cert),
+                    key: fs.readFileSync(tls.key),
+                    ca: tls.ca ? fs.readFileSync(tls.ca) : undefined,
+                }});
+        }
+        catch (e) {
+            if (tls.cert) logger.error(`Can't read the file at: ${tls.cert}`);
+            if (tls.key) logger.error(`Can't read the file at: ${tls.key}`);
+            if (tls.ca) logger.error(`Can't read the file at: ${tls.ca}`);
+        }
     }
     else {
         logger.warn("You are communicating with Vault, without mTLS, beware that Vault can reject the connection.");

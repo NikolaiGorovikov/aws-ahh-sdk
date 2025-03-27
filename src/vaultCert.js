@@ -19,11 +19,18 @@ async function getCert(caches, {requestBody, address, pki_path, pki_role, vault_
     logger.info("Reading the certificate and the key.");
     let agent;
     if (tls) {
-        agent = new Agent({connect: {
-                cert: tls.cert ? fs.readFileSync(tls.cert) : undefined,
-                key: tls.key ? fs.readFileSync(tls.key) : undefined,
-                ca: tls.ca ? fs.readFileSync(tls.ca) : undefined,
-            }});
+        try {
+            agent = new Agent({connect: {
+                    cert: fs.readFileSync(tls.cert),
+                    key: fs.readFileSync(tls.key),
+                    ca: tls.ca ? fs.readFileSync(tls.ca) : undefined,
+                }});
+        }
+        catch (e) {
+            if (tls.cert) logger.error(`Can't read the file at: ${tls.cert}`);
+            if (tls.key) logger.error(`Can't read the file at: ${tls.key}`);
+            if (tls.ca) logger.error(`Can't read the file at: ${tls.ca}`);
+        }
     }
 
 
