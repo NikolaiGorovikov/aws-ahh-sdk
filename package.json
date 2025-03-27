@@ -1,6 +1,6 @@
 {
   "name": "aws-ahh-sdk",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Best aws ahh package",
   "main": "src/index.js",
   "directories": {
