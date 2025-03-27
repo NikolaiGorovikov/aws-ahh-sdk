@@ -30,6 +30,7 @@ async function getCert(caches, {requestBody, address, pki_path, pki_role, vault_
             if (tls.cert) logger.error(`Can't read the file at: ${tls.cert}`);
             if (tls.key) logger.error(`Can't read the file at: ${tls.key}`);
             if (tls.ca) logger.error(`Can't read the file at: ${tls.ca}`);
+            throw e;
         }
     }
 

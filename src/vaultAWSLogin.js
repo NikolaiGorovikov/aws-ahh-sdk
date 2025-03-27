@@ -62,6 +62,7 @@ async function vaultLogin(caches, obj, role) {
             if (tls.cert) logger.error(`Can't read the file at: ${tls.cert}`);
             if (tls.key) logger.error(`Can't read the file at: ${tls.key}`);
             if (tls.ca) logger.error(`Can't read the file at: ${tls.ca}`);
+            throw e;
         }
     }
     else {
